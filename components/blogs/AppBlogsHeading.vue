@@ -1,0 +1,64 @@
+<template>
+    <div class="heading">
+        <div class="row justify-content-center m-0">
+            <h3 class="col-12 text-center title">
+                    Blogs
+            </h3>
+            <div class="col-12 text-center">
+                <div class="breadcrumb">
+                    <nuxt-link to="/">
+                        Home
+                    </nuxt-link>
+                    <a href="">
+                        <font-awesome-icon icon="fa-solid fa-angles-right" />
+                    </a>
+                    <a href="#">
+                        Blogs
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</template>
+
+<script>
+export default {
+    name: 'AppBlogsHeading',
+
+
+}
+</script>
+
+<style>
+.heading {
+    padding-top: 150px;
+    padding-bottom: 150px;
+    position: relative;
+    z-index: 1;
+     background: rgb(10,14,124);
+background: linear-gradient(135deg, rgba(10,14,124,1) 0%, rgba(83,38,170,1) 100%); 
+}
+.heading h3 {
+    font-size: 45px;
+    color: #fff;
+    font-weight: 600;
+    position: relative;
+}
+.heading .breadcrumb {
+    display: flex;
+    justify-content: center;
+}
+.heading a{
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 28.8px;
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+    margin: 0 10px;
+}
+.heading a:hover {
+    color: #091426;
+}
+</style>

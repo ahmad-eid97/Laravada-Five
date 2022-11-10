@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700;900&display=swap');
+
+html, body {
+  font-family: 'Source Sans Pro', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #2c3e50;
+}
+.pb-70 {
+  padding-bottom: 70px !important;
+}
+.pt-100 {
+  padding-top: 100px !important;
+}
+a {
+  text-decoration: none !important;
+}
+img {
+  max-width: 100%;
+}
+* {
+  transition: all 0.3s linear;
+}
+
+.pagination-area {
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+.pagination-area .page-numbers {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    color: var(--main-color);
+    background-color: transparent;
+    border: 1px solid var(--main-color);
+    text-align: center;
+    display: inline-block;
+    position: relative;
+    margin-left: 3px;
+    margin-right: 3px;
+    font-size: 18px;
+    border-radius: 5px;
+}
+.pagination-area .page-numbers.current,
+.pagination-area .page-numbers:hover {
+    background-color: var(--main-color);
+    color: #ffa737;
+}
+.pagination-area .page-numbers svg {
+    position: relative;
+    font-size: 20px;
+  }
+
+  .section-title h2 {
+  max-width: 390px;
+  color: var(--main-color);
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 35px;
+  font-weight: 600;
+  margin-top: 0;
+  line-height: 1.2;
+  margin-bottom: 0;
+}
+.section-title {
+  margin: 0 auto;
+  padding: 0;
+  position: relative;
+  text-align: center;
+}
+.section-title span {
+  margin-bottom: 8px;
+  font-weight: 600;
+  display: block;
+  color: #ffa737;
+}
+section {
+  position: relative;
+  overflow: hidden;
+  padding-top: 70px;
+  padding-bottom: 45px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-attachment: fixed;
+}
+
+.imgo {
+  height: auto !important;
+}
+
+.english {
+  direction: ltr;
+  text-align: left;
+}
+.arabic {
+  direction: rtl;
+  text-align: right;
+}
+
+.footerLinks {
+  display: flex;
+  gap: 15px;
+  margin: 10px 0 20px;
+}
+
+.footerLinks a {
+  color: #000;
+}
