@@ -86,6 +86,8 @@ export default {
     }
     .blog-card .blog-img img {
         border-radius: 5px 5px 0 0;
+        height: 250px;
+        width: 100%;
     }
     .blog-card .blog-img .blog-tag {
         background-color: #ffa737;
