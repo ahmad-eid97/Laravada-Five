@@ -6,45 +6,20 @@
                 <h2>Our Team Members</h2>
             </div>
             <div class="row pt-45 justify-content-center">
-                <div class="col-sm-6 col-md-4 projects-col">
-                    <div class="thumb">
-                        <img src="/assets/images/testimonials/9.jpg" alt="">
-                    </div>
-                    <div class="content">
-                        <h4>RICHARD SWIFT</h4>
-                        <h5>junior consultant</h5>
-                        <h6>Donec vestibulum lectus sem, vel convallis ligula commodo ac. Aenean congue
-                            placerat risus, eu ullamcorper velit maximus sed.</h6>
-                        <h5>tel. 001 234 56 789</h5>
-                        <h3>richard@your-website.com</h3>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4 projects-col">
-                    <div class="thumb">
-                        <img src="/assets/images/testimonials/9.jpg" alt="">
-                    </div>
-                    <div class="content">
-                        <h4>RICHARD SWIFT</h4>
-                        <h5>junior consultant</h5>
-                        <h6>Donec vestibulum lectus sem, vel convallis ligula commodo ac. Aenean congue
-                            placerat risus, eu ullamcorper velit maximus sed.</h6>
-                        <h5>tel. 001 234 56 789</h5>
-                        <h3>richard@your-website.com</h3>
+                <div v-for="member in team.teams" :key="member.id" class="col-sm-6 col-md-4 projects-col">
+                    <div class="card">
+                        <div class="thumb">
+                            <img :src="member.image" alt="">
+                            <div class="rollover"></div>
+                        </div>
+                        <div class="content">
+                            <h4>{{member.name}}</h4>
+                            <h5>{{member.job}}</h5>
+                            <h6>{{member.description}}</h6>
+                            <h5>{{member.phone}}</h5>
+                            <h5>{{member.email}}</h5>
 
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4 projects-col">
-                    <div class="thumb">
-                        <img src="/assets/images/testimonials/9.jpg" alt="">
-                    </div>
-                    <div class="content">
-                        <h4>RICHARD SWIFT</h4>
-                        <h5>junior consultant</h5>
-                        <h6>Donec vestibulum lectus sem, vel convallis ligula commodo ac. Aenean congue
-                            placerat risus, eu ullamcorper velit maximus sed.</h6>
-                        <h5>tel. 001 234 56 789</h5>
-                        <h3>richard@your-website.com</h3>
-
+                        </div>
                     </div>
                 </div>
             </div>
@@ -54,7 +29,8 @@
 
 <script>
 export default {
-    name: 'AppTestimonialsTeam'
+    name: 'AppTestimonialsTeam',
+    props: ["team"]
 }
 </script>
 
