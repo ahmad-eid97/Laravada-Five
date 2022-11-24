@@ -3,7 +3,7 @@
         <h3 class="title">Gallery</h3>
         <ul class="blog-gallery">
             <li
-                v-for="(image, index) in media"
+                v-for="(image, index) in blogDetails.gallery"
                 :key="index"
                 style="display: inline-block; margin: 0 5px 5px 0"
             >
@@ -24,6 +24,9 @@
 <script>
 export default {
     name: 'AppBlogGallery',
+    props: ["blogDetails"],
+    components: {
+    },
     data () {
         return {
             media: [
@@ -84,12 +87,12 @@ export default {
   transition: all .5s;
   opacity: 0;
   visibility: hidden;
-  border-radius: 15px;
+  border-radius: 12px;
 }
 .side-bar-widget .blog-gallery li a img {
   width: 100%;
   height: 100%;
-  border-radius: 15px;
+  border-radius: 12px;
 }
 .side-bar-widget .blog-gallery li a svg {
   position: absolute;

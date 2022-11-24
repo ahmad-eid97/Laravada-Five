@@ -1,7 +1,7 @@
 <template>
     <div class="blog-article">
         <div class="blog-article-img">
-            <img src="/assets/images/blog-details.jpg" alt="Images">
+            <img :src="blogDetails.image" alt="Images">
             <div class="blog-article-tag">
                 <h3>04</h3>
                 <span>Nov</span>
@@ -11,7 +11,7 @@
             <ul>
                 <li>
                     <font-awesome-icon icon="fa-solid fa-user" />
-                    By Admin
+                    By {{blogDetails.username}}
                 </li>
                 <li>
                     <font-awesome-icon icon="fa-solid fa-eye" />
@@ -19,13 +19,14 @@
                 </li>
                 <li>
                     <font-awesome-icon icon="fa-solid fa-comments" />
-                    2 Comments
+                    {{blogDetails.comments.length}} Comments
                 </li>
             </ul>
             <h2>10 Ways to Get Efficient Result and Benefits</h2>
         </div>
         <div class="article-content">
-            <p>
+            <p>{{blogDetails.description}}</p>
+            <!-- <p>
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. cu
             sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies ne,
             pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet n,
@@ -59,7 +60,7 @@
             <p>
             It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here',
             making it look like readable English.
-            </p>
+            </p> -->
         </div>
         <div class="blog-article-share">
             <div class="row align-items-center">
@@ -101,41 +102,17 @@
         </div>
         <div class="comments-wrap">
             <div class="comment-title">
-                <h3 class="title">Comments (02)</h3>
+                <h3 class="title">Comments ({{blogDetails.comments.length}})</h3>
             </div>
             <ul class="comment-list">
-                <li>
-                    <img src="/assets/images/blog-profile1.png" alt="Image">
-                    <h3>Medison Decros</h3>
-                    <span>On September 18,2020 at 4.30 pm</span>
+                <li v-for="comment in blogDetails.comments" :key="comment.id">
+                    <img :src="comment.image" alt="Image">
+                    <h3>{{comment.username}}</h3>
+                    <span>{{comment.publish_date}}</span>
                     <p>
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                    Aenean massa. cu sociis natoque penatibus et magnis dis parturient montes, nascetur ridicule
-                    us mus. Donec quam felis, ultricies ne, pellentesque.
+                    {{comment.content}}
                     </p>
                     <a href="#"> Reply</a>
-                </li>
-                <li>
-                    <img src="/assets/images/blog-profile2.png" alt="Image">
-                    <h3>Jekson Albin</h3>
-                    <span>On September 18,2020 at 4.30 pm</span>
-                    <p>
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                    Aenean massa. cu sociis natoque penatibus et magnis dis parturient montes, nascetur ridicule
-                    us mus. Donec quam felis, ultricies ne, pellentesque.
-                    </p>
-                    <a href="#"> Reply</a>
-                </li>
-                <li>
-                    <img src="/assets/images/blog-profile3.png" alt="Image">
-                    <h3>Bentham Debid</h3>
-                    <span>On September 18,2020 at 4.30 pm</span>
-                    <p>
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                    Aenean massa. cu sociis natoque penatibus et magnis dis parturient montes, nascetur ridicule
-                    us mus. Donec quam felis, ultricies ne, pellentesque.
-                    </p>
-                    <a href="#">Reply</a>
                 </li>
             </ul>
         </div>
@@ -190,7 +167,8 @@
 
 <script>
 export default {
-    name: 'AppBlogBody'
+    name: 'AppBlogBody',
+    props: ["blogDetails"]
 }
 </script>
 
@@ -203,16 +181,16 @@ export default {
         position: relative;
     }
     .blog-article .blog-article-img img {
-        border-radius: 15px;
+        border-radius: 12px;
         max-width: 100%;
     }
     .blog-article .blog-article-img .blog-article-tag {
-        background-color: rgb(255, 167, 55);
+        background-color: var(--main-color);
         padding: 15px 12px;
         position: absolute;
         bottom: -20px;
         right: 30px;
-        border-radius: 3px;
+        border-radius: 12px;
         text-align: center;
     }
     .blog-article .blog-article-img .blog-article-tag h3 {
@@ -239,7 +217,7 @@ export default {
     .blog-article .blog-article-title ul li {
         display: inline-block;
         font-size: 15px;
-        color: var(--main-color);
+        color: #212529;
         margin-right: 30px;
         position: relative;
         font-weight: 500;
@@ -256,7 +234,7 @@ export default {
         font-size: 26px;
         max-width: 650px;
         margin-bottom: 0;
-        color: var(--main-color);
+        color: #212529;
     }
     .blog-article .article-content {
         padding-bottom: 10px;
@@ -294,8 +272,7 @@ export default {
         height: 70px;
         line-height: 70px;
         color: #fff;
-         background: rgb(10,14,124);
-background: linear-gradient(135deg, rgba(10,14,124,1) 0%, rgba(83,38,170,1) 100%);  
+         background: var(--main-color);
         text-align: center;
         border-radius: 50px;
         position: absolute;
@@ -330,9 +307,9 @@ background: linear-gradient(135deg, rgba(10,14,124,1) 0%, rgba(83,38,170,1) 100%
     }
     .blog-article .blog-article-share .blog-tag ul li a {
         color: #fff;
-        background-color: rgb(255, 167, 55);
+        background-color: var(--main-color);
         padding: 5px 12px;
-        border-radius: 15px;
+        border-radius: 20px;
         font-size: 14px;
     }
     .blog-article .blog-article-share .social-icon {
@@ -351,11 +328,12 @@ background: linear-gradient(135deg, rgba(10,14,124,1) 0%, rgba(83,38,170,1) 100%
         height: 35px;
         line-height: 37px;
         text-align: center;
-        color: rgb(255, 167, 55);
+        color: var(--main-color);
         background-color: #fff;
         -webkit-box-shadow: 0 0 15px rgba(0,0,0,.1);
         box-shadow: 0 0 15px rgba(0,0,0,.1);
         display: inline-block;
+        border-radius: 12px;
     }
     .blog-article .comments-wrap {
         margin-bottom: 30px;
@@ -363,7 +341,7 @@ background: linear-gradient(135deg, rgba(10,14,124,1) 0%, rgba(83,38,170,1) 100%
     .blog-article .comments-wrap .comment-title .title {
         font-size: 24px;
         margin-bottom: 0;
-        color: var(--main-color);
+        color: #212529;
     }
     .blog-article .comments-wrap .comment-list {
         list-style: none;
@@ -380,14 +358,14 @@ background: linear-gradient(135deg, rgba(10,14,124,1) 0%, rgba(83,38,170,1) 100%
         position: absolute;
         top: 30px;
         left: 0;
-        border-radius: 50%;
+        border-radius: 12px;
         width: 54px;
     }
     .blog-article .comments-wrap .comment-list li h3 {
         margin-bottom: 5px;
         font-size: 18px;
         font-weight: 600;
-        color: var(--main-color);
+        color: #212529;
     }
     .blog-article .comments-wrap .comment-list li span {
         font-size: 15px;
@@ -398,7 +376,7 @@ background: linear-gradient(135deg, rgba(10,14,124,1) 0%, rgba(83,38,170,1) 100%
         margin-bottom: 0;
     }
     .blog-article .comments-wrap .comment-list li a {
-        color: rgb(255, 167, 55);
+        color: var(--main-color);
         font-weight: 600;
         position: absolute;
         top: 30px;
@@ -411,7 +389,7 @@ background: linear-gradient(135deg, rgba(10,14,124,1) 0%, rgba(83,38,170,1) 100%
     .blog-article .comments-form .title {
         font-size: 24px;
         margin-bottom: 20px;
-        color: var(--main-color);
+        color: #212529;
     }
     .blog-article .comments-form .contact-form {
         -webkit-box-shadow: none;
@@ -431,22 +409,26 @@ background: linear-gradient(135deg, rgba(10,14,124,1) 0%, rgba(83,38,170,1) 100%
         font-size: 15px;
     }
 .contact-form-area .section-title h2 {
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-  font-size: 35px;
-  font-weight: 600;
-  margin-top: 0;
-  line-height: 1.2;
-  color:var(--main-color);
-  margin-bottom: 0;
+    max-width: 600px;
+    color: #212529;
+    font-size: 35px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    line-height: 42px;
+    text-align: left;
+    margin-top: 10px;
+    margin-right: auto;
+    margin-bottom: 15px;
+    margin-left: auto;
+    text-align: center;
 }
+
 .contact-form-area h2 {
     font-size: 35px;
     font-weight: 600;
     margin-top: 0;
     line-height: 1.2;
-    color:var(--main-color);
+    color:#212529;
     margin-bottom: 0;
 }
 .contact-info::before {
@@ -468,12 +450,12 @@ background: linear-gradient(135deg, rgba(10,14,124,1) 0%, rgba(83,38,170,1) 100%
     margin-bottom: 30px;
     background-color:var(--main-color);
     padding: 52px 35px 22px;
-    border-radius: 15px;
+    border-radius: 12px;
     position: relative;
     z-index: 1;
 }
 .contact-form-area .contact-info span {
-    color: #ffa737;
+    color: #fff;
     display: block;
     margin-bottom: 5px;
 }
@@ -505,7 +487,7 @@ background: linear-gradient(135deg, rgba(10,14,124,1) 0%, rgba(83,38,170,1) 100%
   font-size: 20px;
   color:var(--main-color);
   border-radius: 50px;
-  border: 1px solid #e2e2e2;
+  border: 1px solid #fff;
   margin-bottom: 10px;
   text-align: center;
   position: absolute;
@@ -525,7 +507,7 @@ background: linear-gradient(135deg, rgba(10,14,124,1) 0%, rgba(83,38,170,1) 100%
   font-size: 15px;
 }
 .contact-form .form-group label {
-  color: var(--main-color);
+  color: #212529;
   font-size: 15px;
   margin-bottom: 15px;
   font-weight: 500;
@@ -535,7 +517,7 @@ background: linear-gradient(135deg, rgba(10,14,124,1) 0%, rgba(83,38,170,1) 100%
 }
 .contact-form .form-group .form-control {
   height: 50px;
-  color: var(--main-color);
+  color: #212529;
   border: 1px solid var(--main-color);
   background-color: #fff;
   font-size: 15px;
@@ -566,7 +548,7 @@ height: auto;
 }
 .contact-form .agree-label label a,
 .contact-form  a {
-  color: #ffa737;
+  color: var(--main-color);
 }
 
 .contact-form .default-btn, .contact-form .default-btn:hover {
