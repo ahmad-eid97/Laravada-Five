@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <app-home-intro></app-home-intro>
+    <app-home-intro :sliderData="sliderData"></app-home-intro>
     <app-home-featured></app-home-featured>
     <app-home-featured-2></app-home-featured-2>
     <app-home-work></app-home-work>
@@ -37,6 +37,13 @@ export default {
     AppHomeTestominials,
     AppHomePartners,
     AppHomeBottomBanner
+  },
+  async asyncData({ $axios }) {
+    const sliderData = await $axios.get('/sliders');
+
+    return {
+      sliderData: sliderData.data.data.sliders
+    }
   }
 }
 </script>

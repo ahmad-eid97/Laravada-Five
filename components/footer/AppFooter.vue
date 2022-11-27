@@ -18,19 +18,19 @@
         </div>
         <div class="row mx-0 align-items-center justify-content-center">
             <div class="col-auto social">
-                <a href="#" >
+                <a :href="`https://${$store.state.footerData.facebook}`" target="_blank" >
                     <font-awesome-icon icon="fa-brands fa-facebook-f" />
                 </a>
-                <a href="#" >
+                <!-- <a :href="$store.state.footerData.twitter" >
                     <font-awesome-icon icon="fa-brands fa-twitter" />
-                </a>
-                <a href="#" >
+                </a> -->
+                <a :href="`https://${$store.state.footerData.youtube}`" target="_blank" >
                     <font-awesome-icon icon="fa-brands fa-youtube" />           
                 </a>
-                <a href="#" >
+                <a :href="`https://${$store.state.footerData.instagram}`" target="_blank" >
                     <font-awesome-icon icon="fa-brands fa-instagram" />          
                 </a>
-                <a href="#" >
+                <a :href="`https://${$store.state.footerData.linkedin}`" target="_blank" >
                     <font-awesome-icon icon="fa-brands fa-linkedin-in" />          
                 </a>
             </div>
@@ -53,7 +53,7 @@ export default {
         
     },
     mounted() {
-        console.log(this.$store.state.footerLinks)
+        console.log(this.$store.state.footerData)
     }
 }
 </script>

@@ -44,6 +44,7 @@ import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 import "animate.css/animate.css";
 export default {
     name: 'AppHomeIntro',
+    props: ["sliderData"],
     components: {
         VueSlickCarousel
     },
@@ -51,6 +52,9 @@ export default {
         return {
 
         }
+    },
+    mounted() {
+        console.log(this.sliderData)
     }
 }
 </script>
