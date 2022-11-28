@@ -6,39 +6,9 @@
             class="owl-carousel"
         >
 
-            <swiper-slide>
+            <swiper-slide v-for="partner in partners" :key="partner.id">
             <div class="item">
-                <img class="" src="https://avada.theme-fusion.com/seo/wp-content/uploads/sites/99/2018/06/clients_partner_2-200x202.png" width="150" height="150">
-            </div>
-            </swiper-slide>
-
-            <swiper-slide>
-            <div class="item">
-                <img class="" src="https://avada.theme-fusion.com/seo/wp-content/uploads/sites/99/2018/06/clients_partner_3-200x202.png" width="150" height="150">
-            </div>
-            </swiper-slide>
-
-            <swiper-slide>
-            <div class="item">
-                <img class="" src="https://avada.theme-fusion.com/seo/wp-content/uploads/sites/99/2018/06/clients_partner_4-200x202.png" width="150" height="150">
-            </div>
-            </swiper-slide>
-
-            <swiper-slide>
-            <div class="item">
-                <img class="" src="https://avada.theme-fusion.com/seo/wp-content/uploads/sites/99/2018/06/clients_partner_5-200x202.png" width="150" height="150">
-            </div>
-            </swiper-slide>
-
-            <swiper-slide>
-            <div class="item">
-                <img class="" src="https://avada.theme-fusion.com/seo/wp-content/uploads/sites/99/2018/06/clients_partner_6-200x202.png" width="150" height="150">
-            </div>
-            </swiper-slide>
-
-            <swiper-slide>
-            <div class="item">
-                <img class="" src="https://avada.theme-fusion.com/seo/wp-content/uploads/sites/99/2018/06/clients_partner_1-200x202.png" width="150" height="150">
+                <img class="" :src="partner.image" width="150" height="150">
             </div>
             </swiper-slide>
 
@@ -49,6 +19,7 @@
 <script>
 export default {
     name: 'AppHomePartners',
+    props: ["partners"],
     data() {
         return {
             swiperOption: {
@@ -87,7 +58,7 @@ export default {
 </script>
 <style>
     section.partners {
-        padding: 0 30px 30px;
+        padding: 0 30px 60px;
     }
     section.partners .owl-carousel {
         padding-top: 50px;
@@ -97,7 +68,7 @@ export default {
         text-align: center;
     }
     section.partners .owl-carousel .item img {
-        max-height: 115px;
+        height: 80px !important;
         vertical-align: middle;
         width: auto;
         display: inline;

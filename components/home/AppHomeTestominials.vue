@@ -11,20 +11,20 @@
             class="owl-carousel"
         >
 
-            <swiper-slide>
+            <swiper-slide v-for="item in testimonials" :key="item.id">
                 <div class="item">
                     <div class="row m-0 justify-content-center">
                         <div class="col-12 p-0 text-center">
-                            <img class="testimonial-image ls-is-cached lazyloaded" src="https://avada.theme-fusion.com/seo/wp-content/uploads/sites/99/2018/07/testimonials-1.jpg" width="150" height="150">
+                            <img class="testimonial-image ls-is-cached lazyloaded" :src="item.image" width="150" height="150">
                         </div>
                         <blockquote >
                             <q class="fusion-clearfix">
-                                Beauty is when you can appreciate yourself. When you love yourself, that’s when you’re most beautiful.
+                                {{item.description}}
                             </q>
                         </blockquote>
                         <span class="company-name">
-                            <strong>Shelia McCourtney,</strong>
-                            ARCHITECT
+                            <strong>{{item.job}}</strong>
+                            {{item.title}}
                         </span>
                     </div>
                 </div>
@@ -57,8 +57,8 @@
 <script>
 
 export default {
-
     name: 'AppHomeTestominials',
+    props: ["testimonials"],
     data() {
         return {
             swiperOption: {

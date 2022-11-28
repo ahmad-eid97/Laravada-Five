@@ -11,7 +11,7 @@
                 </p>
             </div>
             <div class="row justify-content-between m-0">
-                <div class="col-md-6 col-lg-6 col-xl-4">
+                <div v-for="blog in blogs" :key="blog.id" class="col-md-6 col-lg-6 col-xl-4">
                     <div class="new">
                         <div class="image">
                             <img src="https://avada.theme-fusion.com/seo/wp-content/uploads/sites/99/2017/10/related-service-2-700x441.jpg" alt="">
@@ -19,54 +19,14 @@
                         <div class="content">
                             <h2 >
                                 <a href="#">
-                                Why You Need A SEO Agency Now
+                                    {{blog.title}}
                                 </a>
                             </h2>
                             <p class="meta">
-                                <span>November 1st, 2017</span>
+                                <span>{{blog.publish_date}}</span>
                             </p>
                             <p class="text">
-                                ALorem ipsum dolor sit amet, consectetur adipiscing elit. In et scelerisque sem. Nunc molestie neque augue, at gravida mi blandit
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-6 col-xl-4">
-                    <div class="new">
-                        <div class="image">
-                            <img src="https://avada.theme-fusion.com/seo/wp-content/uploads/sites/99/2017/10/related-service-4-700x441.jpg" alt="">
-                        </div>
-                        <div class="content">
-                            <h2 >
-                                <a href="#">
-                                SEO Tips For Your Startup
-                                </a>
-                            </h2>
-                            <p class="meta">
-                                <span>November 1st, 2017</span>
-                            </p>
-                            <p class="text">
-                                ALorem ipsum dolor sit amet, consectetur adipiscing elit. In et scelerisque sem. Nunc molestie neque augue, at gravida mi blandit
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-6 col-xl-4">
-                    <div class="new">
-                        <div class="image">
-                            <img src="https://avada.theme-fusion.com/seo/wp-content/uploads/sites/99/2017/11/blog-post-6-700x441.jpg" alt="">
-                        </div>
-                        <div class="content">
-                            <h2 >
-                                <a href="#">
-                                Image Optimization For Your Site
-                                </a>
-                            </h2>
-                            <p class="meta">
-                                <span>November 1st, 2017</span>
-                            </p>
-                            <p class="text">
-                                ALorem ipsum dolor sit amet, consectetur adipiscing elit. In et scelerisque sem. Nunc molestie neque augue, at gravida mi blandit
+                                {{blog.short_description}}
                             </p>
                         </div>
                     </div>
@@ -74,7 +34,7 @@
             </div>
             <div class="row mx-0 mt-5 align-items-center justify-content-center">
                 <div class="col-auto">
-                    <a href="#" class="btn">Go To News</a>
+                    <nuxt-link :to="`/blogs`" class="btn">Go To News</nuxt-link>
                 </div>
             </div>
     </section>
@@ -83,6 +43,7 @@
 <script>
 export default {
     name: 'AppHomeNews',
+    props: ["blogs"],
     data() {
         return {
         }

@@ -11,66 +11,18 @@
             </p>
         </div>
         <div class="row items mx-0">
-            <div class="col-md-6 col-lg-6 col-xl-3">
+            <div v-for="service in services.slice(0, 4)" :key="service" class="col-md-6 col-lg-6 col-xl-3">
                 <div class="item">
                     <div class="heading">
                         <div class="icon">
                             <font-awesome-icon icon="fa-brands fa-google" />
                         </div>
-                        <h3>Google SEO</h3>
+                        <h3>{{service.title}}</h3>
                     </div>
                     <p>
-                        Aliquam non elit lacus. Praesent aliquet, ipsum id scelerisque convallis mi ligula euismod odio vel dictum mi risus a mi.
+                        {{service.short_description}}
                     </p>
-                    <a href="#">Let's work together <font-awesome-icon icon="fa-solid fa-angle-right" /></a>
-
-                </div>
-
-            </div>
-            <div class="col-md-6 col-lg-6 col-xl-3">
-                <div class="item">
-                    <div class="heading">
-                        <div class="icon">
-                            <font-awesome-icon icon="fa-solid fa-gear" />
-                        </div>
-                        <h3>Brand Strategy</h3>
-                    </div>
-                    <p>
-                        Aliquam non elit lacus. Praesent aliquet, ipsum id scelerisque convallis mi ligula euismod odio vel dictum mi risus a mi.
-                    </p>
-                    <a href="#">Let's work together <font-awesome-icon icon="fa-solid fa-angle-right" /></a>
-
-                </div>
-
-            </div>
-            <div class="col-md-6 col-lg-6 col-xl-3">
-                <div class="item">
-                    <div class="heading">
-                        <div class="icon">
-                            <font-awesome-icon icon="fa-solid fa-building" />
-                        </div>
-                        <h3>Local SEO</h3>
-                    </div>
-                    <p>
-                        Aliquam non elit lacus. Praesent aliquet, ipsum id scelerisque convallis mi ligula euismod odio vel dictum mi risus a mi.
-                    </p>
-                    <a href="#">Let's work together <font-awesome-icon icon="fa-solid fa-angle-right" /></a>
-
-                </div>
-
-            </div>
-            <div class="col-md-6 col-lg-6 col-xl-3">
-                <div class="item">
-                    <div class="heading">
-                        <div class="icon">
-                            <font-awesome-icon icon="fa-solid fa-chart-column" />
-                        </div>
-                        <h3>SEO Analysis</h3>
-                    </div>
-                    <p>
-                        Aliquam non elit lacus. Praesent aliquet, ipsum id scelerisque convallis mi ligula euismod odio vel dictum mi risus a mi.
-                    </p>
-                    <a href="#">Let's work together <font-awesome-icon icon="fa-solid fa-angle-right" /></a>
+                    <nuxt-link :to="`/service/${service.id}`">Let's work together <font-awesome-icon icon="fa-solid fa-angle-right" /></nuxt-link>
 
                 </div>
 
@@ -85,6 +37,7 @@
 import "animate.css/animate.min.css";
 export default {
     name: 'AppHomeFeatured2',
+    props: ["services"],
     data() {
         return {
 
@@ -141,6 +94,7 @@ export default {
         padding-top: 35px;
         margin-top: 15px;
         margin-bottom: 20px;
+        height: 100%;
     }
     .featured2 .items .item .heading{
         margin-bottom: 15px;
