@@ -1,14 +1,14 @@
 <template>
   <div class="home">
     <app-home-intro :sliderData="sliderData"></app-home-intro>
-    <app-home-featured></app-home-featured>
+    <app-home-featured :features="features"></app-home-featured>
     <app-home-featured-2 :services="services"></app-home-featured-2>
-    <app-home-work></app-home-work>
+    <app-home-work :projects="projects"></app-home-work>
     <app-home-plans></app-home-plans>
     <app-home-news :blogs="blogs"></app-home-news>
     <app-home-testominials :testimonials="testimonials"></app-home-testominials>
     <app-home-partners :partners="partners"></app-home-partners>
-    <app-home-bottom-banner></app-home-bottom-banner>
+    <app-home-bottom-banner :bottomBanner="bottomBanner"></app-home-bottom-banner>
     <!-- <app-home-features></app-home-features>
     <app-home-work></app-home-work> -->
   </div>
@@ -41,6 +41,10 @@ export default {
   async asyncData({ $axios }) {
     const sliderData = await $axios.get('/sliders');
 
+    const features = await $axios.get('/sections/features');
+
+    const projects = await $axios.get('/portfolios');
+
     const services = await $axios.get('/services');
 
     const blogs = await $axios.get('/blogs?latest=1');
@@ -49,12 +53,17 @@ export default {
 
     const partners = await $axios.get('/partners');
 
+    const bottomBanner = await $axios.get('/sections/banner-bottom');
+
     return {
       sliderData: sliderData.data.data.sliders,
+      features: features.data.data,
+      projects: projects.data.data.portfolios,
       services: services.data.data.services,
       blogs: blogs.data.data.blogs,
       testimonials: testimonials.data.data.testimonials,
-      partners: partners.data.data.partners
+      partners: partners.data.data.partners,
+      bottomBanner: bottomBanner.data.data
     }
   }
 }

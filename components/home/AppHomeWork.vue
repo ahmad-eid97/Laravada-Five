@@ -12,7 +12,7 @@
         </div>
         <div class="row">
             <CoolLightBox 
-                :items="items" 
+                :items="projects.map(one => one.image ? one.image : 'https://via.placeholder.com/350x150')" 
                 :index="index"
                 @close="index = null">
             </CoolLightBox>
@@ -20,11 +20,11 @@
                 <div class="row justify-content-between m-0">
                     <div
                         class="col-md-6 col-lg-6 col-xl-4 my-3"
-                        v-for="(image, imageIndex) in items"
+                        v-for="(item, imageIndex) in projects"
                         :key="imageIndex"
                         @click="index = imageIndex"
                     >
-                        <div class="image" :style="{ backgroundImage: 'url(' + image + ')' }">
+                        <div class="image" :style="{ backgroundImage: 'url(' + item.image + ')' }">
                             <div class="rollover">
                                 <div class="rollover-content">
                                     <a class="rollover-link" href="#">
@@ -48,6 +48,7 @@
 <script>
 export default {
     name: 'AppHomeWork',
+    props: ["projects"],
     data() {
         return {
             items: [
@@ -60,6 +61,9 @@ export default {
             ],
             index: null
         }
+    },
+    mounted() {
+        console.log(this.projects.map(one => one.image))
     }
 }
 </script>

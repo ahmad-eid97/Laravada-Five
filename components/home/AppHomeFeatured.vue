@@ -2,55 +2,25 @@
     <div class="featured">
         <div class="row mx-0 justify-content-center">
             <h2 class="col-md-6">
-                meet the new agency SEO template from the avada team
+                {{features.find(one => one.key === 'features_title').value}}
             </h2>
         </div>
         <div class="row justify-content-center">
             <p class="col-md-6">
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.
+                {{features.find(one => one.key === 'features_description').value}}
             </p>
         </div>
         <div class="row mx-0 items">
-            <div class="col-md-6 col-lg-6 col-xl-4">
+            <div v-for="feature in features.find(one => one.key === 'features_text_list').value.slice(0, 3)" :key="feature" class="col-md-6 col-lg-6 col-xl-4">
                 <div class="item">
                     <div class="heading">
                         <div class="icon">
-                            <font-awesome-icon icon="fa-solid fa-road" />
+                            <font-awesome-icon :icon="feature.icon" />
                         </div>
-                        <h3>Establish Goals</h3>
+                        <h3>{{feature.title}}</h3>
                     </div>
                     <p>
-                        Aliquam non elit lacus. Praesent aliquet, ipsum id scelerisque convallis mi ligula euismod odio vel dictum mi risus a mi.
-                    </p>
-
-                </div>
-
-            </div>
-            <div class="col-md-6 col-lg-6 col-xl-4">
-                <div class="item">
-                    <div class="heading">
-                        <div class="icon">
-                            <font-awesome-icon icon="fa-solid fa-video" />
-                        </div>
-                        <h3>Work With a Team</h3>
-                    </div>
-                    <p>
-                        Aliquam non elit lacus. Praesent aliquet, ipsum id scelerisque convallis mi ligula euismod odio vel dictum mi risus a mi.
-                    </p>
-
-                </div>
-
-            </div>
-            <div class="col-md-6 col-lg-6 col-xl-4">
-                <div class="item">
-                    <div class="heading">
-                        <div class="icon">
-                            <font-awesome-icon icon="fa-solid fa-droplet" />
-                        </div>
-                        <h3>Get Results</h3>
-                    </div>
-                    <p>
-                        Aliquam non elit lacus. Praesent aliquet, ipsum id scelerisque convallis mi ligula euismod odio vel dictum mi risus a mi.
+                        {{feature.description}}
                     </p>
 
                 </div>
@@ -70,6 +40,7 @@
 import "animate.css/animate.min.css";
 export default {
     name: 'AppHomeFeatured',
+    props: ["features"],
     data() {
         return {
 

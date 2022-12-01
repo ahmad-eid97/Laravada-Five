@@ -2,17 +2,17 @@
     <div class="banner-bottom">
        <div class="row mx-0 justify-content-center">
             <h2 class="col-md-6">
-                start your free consultation
+                {{bottomBanner.find(one => one.key === 'banner-bottom_title').value}}
             </h2>
         </div>
         <div class="row justify-content-center">
             <p class="col-md-6 lead">
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.
+                {{bottomBanner.find(one => one.key === 'banner-bottom_description').value}}
             </p>
         </div>
         <div class="row mx-0 mt-5 align-items-center justify-content-center">
             <div class="col-auto">
-                <a href="#" class="btn">CONTACT US NOW</a>
+                <a :href="bottomBanner.find(one => one.key === 'banner-bottom_link').value" class="btn">CONTACT US NOW</a>
             </div>
         </div>
     </div>
@@ -21,6 +21,7 @@
 <script>
 export default {
     name: 'AppHomeBanner',
+    props: ["bottomBanner"],
     data() {
         return {
 
