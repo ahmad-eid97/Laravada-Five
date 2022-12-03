@@ -8,25 +8,27 @@
     <app-home-news :blogs="blogs"></app-home-news>
     <app-home-testominials :testimonials="testimonials"></app-home-testominials>
     <app-home-partners :partners="partners"></app-home-partners>
-    <app-home-bottom-banner :bottomBanner="bottomBanner"></app-home-bottom-banner>
+    <app-home-bottom-banner
+      :bottomBanner="bottomBanner"
+    ></app-home-bottom-banner>
     <!-- <app-home-features></app-home-features>
     <app-home-work></app-home-work> -->
   </div>
 </template>
 
 <script>
-import AppHomeBottomBanner from '../components/home/AppHomeBottomBanner.vue'
-import AppHomeFeatured from '../components/home/AppHomeFeatured.vue'
-import AppHomeFeatured2 from '../components/home/AppHomeFeatured2.vue'
-import AppHomeNews from '../components/home/AppHomeNews.vue'
-import AppHomePlans from '../components/home/AppHomePlans.vue'
-import AppHomeTestominials from '../components/home/AppHomeTestominials.vue'
-import AppHomeIntro from '../components/home/AppHomeIntro.vue'
-import AppHomeWork from '../components/home/AppHomeWork.vue'
-import AppHomePartners from '../components/home/AppHomePartners.vue'
+import AppHomeBottomBanner from "../components/home/AppHomeBottomBanner.vue";
+import AppHomeFeatured from "../components/home/AppHomeFeatured.vue";
+import AppHomeFeatured2 from "../components/home/AppHomeFeatured2.vue";
+import AppHomeNews from "../components/home/AppHomeNews.vue";
+import AppHomePlans from "../components/home/AppHomePlans.vue";
+import AppHomeTestominials from "../components/home/AppHomeTestominials.vue";
+import AppHomeIntro from "../components/home/AppHomeIntro.vue";
+import AppHomeWork from "../components/home/AppHomeWork.vue";
+import AppHomePartners from "../components/home/AppHomePartners.vue";
 
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
     AppHomeIntro,
     AppHomeFeatured,
@@ -36,24 +38,32 @@ export default {
     AppHomeNews,
     AppHomeTestominials,
     AppHomePartners,
-    AppHomeBottomBanner
+    AppHomeBottomBanner,
   },
-  async asyncData({ $axios }) {
-    const sliderData = await $axios.get('/sliders');
+  async asyncData({ $axios, app }) {
+    const sliderData = await $axios.get("/sliders");
 
-    const features = await $axios.get('/sections/features');
+    const features = await $axios.get("/sections/features", {
+      headers: {
+        "Accept-Language": app.i18n.locale,
+      },
+    });
 
-    const projects = await $axios.get('/portfolios');
+    const projects = await $axios.get("/portfolios");
 
-    const services = await $axios.get('/services');
+    const services = await $axios.get("/services");
 
-    const blogs = await $axios.get('/blogs?latest=1');
+    const blogs = await $axios.get("/blogs?latest=1");
 
-    const testimonials = await $axios.get('/testimonials');
+    const testimonials = await $axios.get("/testimonials");
 
-    const partners = await $axios.get('/partners');
+    const partners = await $axios.get("/partners");
 
-    const bottomBanner = await $axios.get('/sections/banner-bottom');
+    const bottomBanner = await $axios.get("/sections/banner-bottom", {
+      headers: {
+        "Accept-Language": app.i18n.locale,
+      },
+    });
 
     return {
       sliderData: sliderData.data.data.sliders,
@@ -63,11 +73,9 @@ export default {
       blogs: blogs.data.data.blogs,
       testimonials: testimonials.data.data.testimonials,
       partners: partners.data.data.partners,
-      bottomBanner: bottomBanner.data.data
-    }
-  }
-}
+      bottomBanner: bottomBanner.data.data,
+    };
+  },
+};
 </script>
-<style>
-  
-</style>
+<style></style>
