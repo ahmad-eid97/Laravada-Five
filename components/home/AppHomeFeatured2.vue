@@ -9,7 +9,7 @@
         accusantium doloremque laudantium.
       </p>
     </div>
-    <div class="row items mx-0">
+    <div class="row items mx-0" v-if="services">
       <div
         v-for="service in services.slice(0, 4)"
         :key="service"

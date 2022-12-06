@@ -10,7 +10,10 @@
         {{ features.find((one) => one.key === "features_description").value }}
       </p>
     </div>
-    <div class="row mx-0 items">
+    <div
+      class="row mx-0 items"
+      v-if="features.find((one) => one.key === 'features_text_list').value"
+    >
       <div
         v-for="feature in features
           .find((one) => one.key === 'features_text_list')

@@ -21,7 +21,10 @@
       >
       </CoolLightBox>
       <div class="images-wrapper">
-        <div class="row justify-content-between m-0">
+        <div
+          class="row justify-content-between m-0"
+          v-if="projects.length >= 1"
+        >
           <div
             class="col-md-6 col-lg-6 col-xl-4 my-3"
             v-for="(item, imageIndex) in projects"

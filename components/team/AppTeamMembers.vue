@@ -1,42 +1,45 @@
 <template>
-    <div class="team-area pt-100 pb-70">
-        <div class="container">
-            <div class="section-title text-center">
-                <span class="sp-color2">Our Team</span>
-                <h2>Our Team Members</h2>
+  <div class="team-area pt-100 pb-70">
+    <div class="container">
+      <div class="section-title text-center">
+        <span class="sp-color2">Our Team</span>
+        <h2>Our Team Members</h2>
+      </div>
+      <div class="row pt-45" v-if="team.teams.length >= 1">
+        <div
+          v-for="member in team.teams"
+          :key="member.id"
+          class="col-sm-6 col-md-4 projects-col"
+        >
+          <div class="card">
+            <div class="thumb">
+              <img :src="member.image" alt="" />
+              <div class="rollover"></div>
             </div>
-            <div class="row pt-45">
-                <div v-for="member in team.teams" :key="member.id" class="col-sm-6 col-md-4 projects-col">
-                    <div class="card">
-                        <div class="thumb">
-                            <img :src="member.image" alt="">
-                            <div class="rollover"></div>
-                        </div>
-                        <div class="content">
-                            <h4>{{member.name}}</h4>
-                            <h5>{{member.job}}</h5>
-                            <h6>{{member.description}}</h6>
-                            <h5>{{member.phone}}</h5>
-                            <h5>{{member.email}}</h5>
-
-                        </div>
-                    </div>
-                </div>
+            <div class="content">
+              <h4>{{ member.name }}</h4>
+              <h5>{{ member.job }}</h5>
+              <h6>{{ member.description }}</h6>
+              <h5>{{ member.phone }}</h5>
+              <h5>{{ member.email }}</h5>
             </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
 export default {
-    name: 'AppTeamMembers',
-    props: ["team"]
-}
+  name: "AppTeamMembers",
+  props: ["team"],
+};
 </script>
 
 <style>
 .team-area .section-title {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 .section-title span {
   margin-bottom: 8px;
@@ -83,12 +86,12 @@ export default {
 }
 .projects-col .content h6 {
   color: #989898;
-  font-family: Open Sans,sans-serif;
+  font-family: Open Sans, sans-serif;
   font-size: 14px;
   text-transform: uppercase;
   margin-bottom: 15px;
   line-height: 28px;
-  letter-spacing: .3px;
+  letter-spacing: 0.3px;
 }
 .projects-col .content h3 {
   color: #ffa737;
