@@ -1,7 +1,7 @@
 <template>
   <div class="side-bar-widget">
     <h3 class="title">Tag Cloud</h3>
-    <ul class="side-bar-widget-tag" v-if="blogDetails.tags.length">
+    <ul class="side-bar-widget-tag" v-if="blogDetails.tags.length >= 1">
       <li v-for="tag in blogDetails.tags" :key="tag">
         <a href="#" target="_blank">{{ tag }}</a>
       </li>

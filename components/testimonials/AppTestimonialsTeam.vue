@@ -125,5 +125,6 @@ export default {
 }
 .card {
   padding: 20px;
+  height: 100%;
 }
 </style>

@@ -3,7 +3,7 @@
     <swiper
       :options="swiperOption"
       class="owl-carousel"
-      v-if="partners.partners"
+      v-if="partners.partners.length >= 1"
     >
       <swiper-slide v-for="partner in partners.partners" :key="partner.id">
         <div class="item">
