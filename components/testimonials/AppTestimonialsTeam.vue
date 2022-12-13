@@ -84,7 +84,6 @@ export default {
 .projects-col {
   text-align: center;
   margin-bottom: 40px;
-  height: 100%;
 }
 .projects-col .thumb {
   margin-bottom: 18px;
