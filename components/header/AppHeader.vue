@@ -40,10 +40,19 @@
           <b-nav-item :to="localePath('/blogs')" active-class="active"
             >News</b-nav-item
           >
+          <b-nav-item :to="localePath('/careers')" active-class="active"
+            >Career</b-nav-item
+          >
+          <b-nav-item :to="localePath('/events')" active-class="active"
+            >Events</b-nav-item
+          >
         </b-navbar-nav>
         <div class="d-flex align-items-center">
           <a href="#" class="btn">Get in touch now</a>
           <langSwitch></langSwitch>
+          <div class="logout" @click="logout">
+            <i class="fa-regular fa-right-from-bracket"></i>
+          </div>
         </div>
       </b-collapse>
     </b-navbar>
@@ -71,6 +80,12 @@ export default {
   },
   mounted() {},
   methods: {
+    logout() {
+      this.$store.commit("setUserData", null);
+      this.$cookies.remove("cms-auth");
+      this.$cookies.remove("cms-user");
+      window.location.href = "/login";
+    },
     handleScroll() {
       if (window.pageYOffset > 200) {
         if (this.topOfPage) this.topOfPage = false;
@@ -99,6 +114,17 @@ header {
         left: 0;
         right: 0; */
   background: var(--main-background);
+}
+.logout {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--main-color);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 1.2rem;
+  cursor: pointer;
 }
 .navbar-brand {
   padding-top: 0px !important;
