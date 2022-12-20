@@ -50,7 +50,7 @@
         <div class="d-flex align-items-center">
           <a href="#" class="btn">Get in touch now</a>
           <langSwitch></langSwitch>
-          <div class="logout" @click="logout">
+          <div v-if="$store.state.user" class="logout" @click="logout">
             <i class="fa-regular fa-right-from-bracket"></i>
           </div>
         </div>
@@ -84,7 +84,7 @@ export default {
       this.$store.commit("setUserData", null);
       this.$cookies.remove("cms-auth");
       this.$cookies.remove("cms-user");
-      window.location.href = "/login";
+      this.$router.push(this.localePath("/login"));
     },
     handleScroll() {
       if (window.pageYOffset > 200) {
