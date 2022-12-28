@@ -221,6 +221,7 @@ header {
     }
     &:hover {
       background-color: var(--main-color);
+      border-color: var(--main-color);
       i {
         color: #fff;
       }
