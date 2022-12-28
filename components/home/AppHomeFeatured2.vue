@@ -99,6 +99,7 @@ export default {
 }
 .featured2 .items .item .icon {
   margin-bottom: 15px;
+  text-align: center;
 }
 .featured2 .items .item .icon i {
   font-size: 36px;

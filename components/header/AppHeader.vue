@@ -1,5 +1,17 @@
 <template>
   <header>
+    <div class="cart" :class="openCart ? 'opened' : ''">
+      <div class="head">
+        <i class="fa-regular fa-xmark" @click="openCart = false"></i>
+        <button
+          @click="goToCheckout"
+          :disabled="$store.state.cartItems.length <= 0"
+        >
+          <i class="fa-regular fa-badge-check"></i> Checkout
+        </button>
+      </div>
+      <cart />
+    </div>
     <b-navbar toggleable="lg">
       <b-navbar-brand :href="localePath('/')">
         <img src="/assets/images/logo.png" alt="logoImage" />
@@ -50,8 +62,9 @@
         <div class="d-flex align-items-center">
           <a href="#" class="btn">Get in touch now</a>
           <langSwitch></langSwitch>
-          <div v-if="$store.state.user" class="logout" @click="logout">
-            <i class="fa-regular fa-right-from-bracket"></i>
+          <div class="m-0 cartIcon" @click="openCart = !openCart">
+            <span>{{ $store.state.cartItems.length }}</span>
+            <i class="fa-regular fa-cart-plus"></i>
           </div>
         </div>
       </b-collapse>
@@ -60,12 +73,14 @@
 </template>
 
 <script>
+import cart from "../cart/cart.vue";
 import langSwitch from "../langSwitch/langSwitch.vue";
 // import DropdownMenu from '@innologica/vue-dropdown-menu'
 export default {
   name: "AppHeader",
   components: {
     langSwitch,
+    cart,
     // DropdownMenu
   },
   data() {
@@ -73,6 +88,7 @@ export default {
       show: false,
       show1: false,
       topOfPage: true,
+      openCart: false,
     };
   },
   beforeMount() {
@@ -92,6 +108,10 @@ export default {
       } else {
         if (!this.topOfPage) this.topOfPage = true;
       }
+    },
+    goToCheckout() {
+      this.openCart = false;
+      this.$router.push("/checkout");
     },
   },
 };
@@ -114,6 +134,98 @@ header {
         left: 0;
         right: 0; */
   background: var(--main-background);
+  .cart {
+    width: 390px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    transform: translateX(390px);
+    background-color: #fff;
+    z-index: 999999;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    .head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px;
+      & > i {
+        border: 1px solid var(--main-color);
+        border-radius: 5px;
+        width: 30px;
+        height: 30px;
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+        background-color: var(--main-color);
+        color: #fff;
+        &:hover {
+          color: var(--main-color);
+          background: transparent;
+        }
+      }
+      button {
+        padding: 5px 30px;
+        font-size: 1.1rem;
+        background-color: var(--main-color);
+        color: #fff;
+        border: 1px solid var(--main-color);
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        i {
+          font-size: 1.1rem;
+        }
+        &:disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+          &:hover {
+            background-color: var(--main-color);
+            color: #fff;
+          }
+        }
+        &:hover {
+          background-color: transparent;
+          color: var(--main-color);
+        }
+      }
+    }
+    &.opened {
+      transform: translateX(0);
+    }
+  }
+  .cartIcon {
+    border: 1px solid #fff;
+    border-radius: 5px;
+    width: 45px;
+    height: 45px;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    position: relative;
+    span {
+      position: absolute;
+      top: -15px;
+      right: -10px;
+      width: 30px;
+      height: 30px;
+      background-color: var(--main-color);
+      border-radius: 50%;
+      color: #fff;
+      display: grid;
+      place-content: center;
+      font-size: 1.2rem;
+    }
+    i {
+      color: #fff;
+    }
+    &:hover {
+      background-color: var(--main-color);
+      i {
+        color: #fff;
+      }
+    }
+  }
 }
 .logout {
   width: 50px;

@@ -101,6 +101,7 @@ export default {
 }
 .featured .items .item .icon {
   margin-bottom: 15px;
+  text-align: center;
 }
 .featured .items .item .icon i {
   font-size: 36px;
