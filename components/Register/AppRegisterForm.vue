@@ -136,6 +136,7 @@ export default {
       const response = await this.$axios.post("/users/auth/register", data);
 
       if (!response.data.success) {
+        this.$store.state.showLoader = false;
         if (response.data.data) {
           if (response.data.data.name) {
             response.data.data.name.forEach((error) => {
@@ -145,20 +146,18 @@ export default {
           }
           if (response.data.data.email) {
             response.data.data.email.forEach((error) => {
-              this.$store.state.showLoader = false;
               return this.$toast.error(error);
             });
           }
           if (response.data.data.password) {
             response.data.data.password.forEach((error) => {
-              this.$store.state.showLoader = false;
               return this.$toast.error(error);
             });
           }
         } else {
-          this.$store.state.showLoader = false;
           return this.$toast.error(response.data.message);
         }
+        this.$store.state.showLoader = false;
         return;
       }
 
