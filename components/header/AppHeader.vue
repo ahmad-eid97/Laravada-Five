@@ -62,6 +62,9 @@
         <div class="d-flex align-items-center">
           <a href="#" class="btn">Get in touch now</a>
           <langSwitch></langSwitch>
+          <div v-if="$store.state.user" class="logout" @click="logout">
+            <i class="fa-regular fa-right-from-bracket"></i>
+          </div>
           <div class="m-0 cartIcon" @click="openCart = !openCart">
             <span>{{ $store.state.cartItems.length }}</span>
             <i class="fa-regular fa-cart-plus"></i>
@@ -245,6 +248,18 @@ header {
   margin-right: 25px;
   padding-bottom: 0px !important;
   padding-left: 0px !important;
+}
+
+.logout {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--main-color);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 1.2rem;
+  cursor: pointer;
 }
 .navbar-brand img {
   max-width: 162px;
