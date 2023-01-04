@@ -1,7 +1,7 @@
 <template>
   <div class="insideCart">
     <div class="wrapper">
-      <h2 v-if="!$store.state.cartItems.length">No items in cart yet!</h2>
+      <h4 v-if="!$store.state.cartItems.length">No items in cart yet!</h4>
       <div
         class="cartItem"
         v-for="item in $store.state.cartItems"
@@ -88,7 +88,7 @@ export default {
     padding: 20px 10px 170px;
     overflow-y: auto;
   }
-  h2 {
+  h4 {
     text-align: center;
   }
   .cartItem {

@@ -82,7 +82,7 @@ export default {
       }
       this.$store.state.cartItems = cartItems;
       localStorage.setItem("laravadaCart", JSON.stringify(cartItems));
-      this.$toast.success("Product added to cart successfully");
+      this.$toast.success("You have been enrolled in this course successfully");
     },
   },
 };

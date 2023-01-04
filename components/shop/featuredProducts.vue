@@ -119,7 +119,7 @@ export default {
   .job {
     background: #f0f0f0;
     border: 1px solid #e5e6e7;
-    padding: 40px 20px 20px;
+    padding: 40px 20px 30px;
     border-radius: 10px;
     display: flex;
     align-items: center;

@@ -130,9 +130,7 @@ export default {
         confirmButtonColor: "#ff5e57",
         confirmButtonText: "Logout",
       }).then((result) => {
-        // <--
         if (result.value) {
-          // <-- if confirmed
           this.confirmLogout();
         }
       });
