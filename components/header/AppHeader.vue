@@ -122,6 +122,22 @@ export default {
   mounted() {},
   methods: {
     logout() {
+      this.$swal({
+        title: "Logout!",
+        text: "Are you sure? You want to logout from your account!",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#ff5e57",
+        confirmButtonText: "Logout",
+      }).then((result) => {
+        // <--
+        if (result.value) {
+          // <-- if confirmed
+          this.confirmLogout();
+        }
+      });
+    },
+    confirmLogout() {
       this.$store.commit("setUserData", null);
       this.$cookies.remove("cms-auth");
       this.$cookies.remove("cms-user");
@@ -142,6 +158,20 @@ export default {
 };
 </script>
 <style lang="scss">
+.swal2-container {
+  padding: 0 !important;
+}
+.swal2-shown {
+  padding: 0 !important;
+}
+.swal2-confirm:focus,
+.swal2-cancel:focus {
+  box-shadow: none !important;
+}
+.swal2-cancel {
+  background: #e5e5e5 !important;
+  color: rgb(51, 51, 51) !important;
+}
 header {
   padding-top: 12px;
   margin-top: 0px;

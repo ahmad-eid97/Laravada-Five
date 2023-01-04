@@ -42,7 +42,7 @@
             <p>${{ courseDetails.current_price }}</p>
           </div>
 
-          <button @click="addToCart">Add to cart</button>
+          <button @click="addToCart">Enroll In Course</button>
         </div>
       </div>
     </div>
@@ -64,14 +64,19 @@ export default {
         title: this.courseDetails.title,
         current_price: this.courseDetails.current_price,
         quantity: 1,
+        type: "course",
       };
       let cartItems = localStorage.getItem("laravadaCart")
         ? JSON.parse(localStorage.getItem("laravadaCart"))
         : [];
 
-      let aleradyExists = cartItems.find((one) => one.id === item.id);
+      let aleradyExists = cartItems.find(
+        (one) => one.id === item.id && one.title === item.title
+      );
       if (aleradyExists) {
-        aleradyExists.quantity = aleradyExists.quantity + 1;
+        // aleradyExists.quantity = aleradyExists.quantity + 1;
+        this.$toast.error("You are already enrolld in this course");
+        return;
       } else {
         cartItems.unshift(item);
       }
@@ -141,6 +146,7 @@ output {
       border: 1px solid var(--main-color);
       color: #fff;
       background-color: var(--main-color);
+      border-radius: 30px;
       &:hover {
         background-color: transparent;
         color: var(--main-color);
