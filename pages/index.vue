@@ -70,7 +70,7 @@ export default {
       features: features.data.data,
       projects: projects.data.data.portfolios,
       services: services.data.data.services,
-      blogs: blogs.data.data.blogs,
+      blogs: blogs.data.data.blogs.slice(0, 3),
       testimonials: testimonials.data.data.testimonials,
       partners: partners.data.data.partners,
       bottomBanner: bottomBanner.data.data,

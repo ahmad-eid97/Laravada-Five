@@ -34,9 +34,9 @@
             >
               <div class="rollover">
                 <div class="rollover-content">
-                  <a class="rollover-link" href="#">
-                    <i class="fa-solid fa-link"></i>
-                  </a>
+                  <div class="rollover-link" href="#">
+                    <i class="fa-duotone fa-eye"></i>
+                  </div>
                 </div>
               </div>
             </div>
@@ -115,8 +115,8 @@ export default {
   transform: scaleY(0);
   background-image: linear-gradient(
     to top,
-    rgb(232, 234, 240) 0px,
-    rgb(96, 122, 254) 100%
+    rgba(232, 234, 240, 0.2) 0px,
+    rgba(96, 122, 254, 0.2) 100%
   );
   opacity: 0;
   display: flex;
@@ -149,7 +149,8 @@ export default {
 
 .work .image .rollover-content .rollover-link {
   color: rgb(255, 255, 255);
-  font-size: 30px;
+  font-size: 50px;
+  cursor: pointer;
 }
 .work .image .rollover-content h4 a {
   font-size: 18px;

@@ -17,10 +17,7 @@
       >
         <div class="new">
           <div class="image">
-            <img
-              src="https://avada.theme-fusion.com/seo/wp-content/uploads/sites/99/2017/10/related-service-2-700x441.jpg"
-              alt=""
-            />
+            <img :src="blog.image" alt="" />
           </div>
           <div class="content">
             <h2>

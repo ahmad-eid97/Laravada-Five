@@ -13,7 +13,7 @@
       <div
         v-for="service in services.slice(0, 4)"
         :key="service"
-        class="col-md-6 col-lg-6 col-xl-3"
+        class="col-md-6 col-lg-6 col-xl-3 service"
       >
         <div class="item">
           <div class="heading">
@@ -30,6 +30,9 @@
           ></nuxt-link>
         </div>
       </div>
+      <button class="services" @click="$router.push('/services')">
+        SEE SERVICES
+      </button>
     </div>
   </div>
 </template>
@@ -135,6 +138,30 @@ export default {
   text-align: center;
   text-decoration: none;
   display: block;
+}
+
+button.services {
+  margin: 50px auto 0 !important;
+  width: 200px !important;
+  border-radius: 25px 25px 25px 25px;
+  padding-bottom: 13px;
+  padding-left: 29px;
+  padding-right: 29px;
+  padding-top: 13px;
+  font-weight: 700;
+  justify-content: center;
+  letter-spacing: 0.21px;
+  font-size: 14px;
+  color: rgb(255, 255, 255);
+  background-color: #ffa737;
+  line-height: 17px;
+  min-width: 200px;
+  text-transform: uppercase;
+}
+
+button:hover {
+  background: transparent;
+  border-color: #fff;
 }
 
 @-webkit-keyframes fadeInLeft {
