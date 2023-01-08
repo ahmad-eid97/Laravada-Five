@@ -1,47 +1,19 @@
 <template>
   <section class="intro">
     <VueSlickCarousel :arrows="true" :fade="true" :dots="false">
-      <div class="item item-1">
+      <div class="item item-1" v-for="slide in slides" :key="slide.id">
         <div class="row h-100 m-0 align-items-center">
           <div class="col-md-6">
             <h1>
-              We Provide The <br />
-              Best Seo Services
+              {{ slide.title }}
             </h1>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              <br />
-              Phasellus eu ornare erat. Curabitur pulvinar elit.
+              {{ slide.description }}
             </p>
-            <a href="#" class="btn">BUY LARAVADA NOW</a>
-            <a href="#" class="btn blue">CONTACT US</a>
+            <a :href="slide.link" class="btn">LEARN MORE</a>
           </div>
           <div class="col-md-6">
-            <img
-              src="https://avada.theme-fusion.com/seo/wp-content/uploads/sites/99/2018/06/best-seo-services-slide-1.png"
-              alt=""
-            />
-          </div>
-        </div>
-      </div>
-      <div class="item item-2">
-        <div class="row h-100 m-0 align-items-center">
-          <div class="col">
-            <h1>
-              SEM Campaigns Made<br />
-              Simple With laravada
-            </h1>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              <br />
-              Phasellus eu ornare erat. Curabitur pulvinar elit.
-            </p>
-          </div>
-          <div class="col">
-            <img
-              src="https://avada.theme-fusion.com/seo/wp-content/uploads/sites/99/2018/06/best-sem-seo-services-slide-2.png"
-              alt=""
-            />
+            <img :src="slide.image" alt="" />
           </div>
         </div>
       </div>
@@ -56,7 +28,7 @@ import "vue-slick-carousel/dist/vue-slick-carousel-theme.css";
 import "animate.css/animate.css";
 export default {
   name: "AppHomeIntro",
-  props: ["sliderData"],
+  props: ["slides"],
   components: {
     VueSlickCarousel,
   },
@@ -64,7 +36,7 @@ export default {
     return {};
   },
   mounted() {
-    console.log(this.sliderData);
+    console.log(this.slides);
   },
 };
 </script>
@@ -152,6 +124,7 @@ export default {
   text-transform: uppercase;
   display: inline-block;
   margin: 0 10px 10px;
+  cursor: pointer;
 }
 .item .btn.blue {
   border-radius: 25px 25px 25px 25px;

@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <app-home-intro :sliderData="sliderData"></app-home-intro>
+    <app-home-intro :slides="slides"></app-home-intro>
     <app-home-featured :features="features"></app-home-featured>
     <app-home-featured-2 :services="services"></app-home-featured-2>
     <app-home-work :projects="projects"></app-home-work>
@@ -41,7 +41,11 @@ export default {
     AppHomeBottomBanner,
   },
   async asyncData({ $axios, app }) {
-    const sliderData = await $axios.get("/sliders");
+    const slides = await $axios.get("/sliders", {
+      headers: {
+        "Accept-Language": app.i18n.locale,
+      },
+    });
 
     const features = await $axios.get("/sections/features", {
       headers: {
@@ -66,7 +70,7 @@ export default {
     });
 
     return {
-      sliderData: sliderData.data.data.sliders,
+      slides: slides.data.data.sliders,
       features: features.data.data,
       projects: projects.data.data.portfolios,
       services: services.data.data.services,
