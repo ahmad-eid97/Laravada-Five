@@ -13,7 +13,7 @@
             <a :href="slide.link" class="btn">LEARN MORE</a>
           </div>
           <div class="col-md-6">
-            <img :src="slide.image" alt="" />
+            <img :src="slide.image" alt="slide image" />
           </div>
         </div>
       </div>
@@ -35,9 +35,7 @@ export default {
   data() {
     return {};
   },
-  mounted() {
-    console.log(this.slides);
-  },
+  mounted() {},
 };
 </script>
 <style lang="scss">
