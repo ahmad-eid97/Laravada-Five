@@ -67,7 +67,7 @@
               <b-dropdown-item
                 v-for="child in item.child"
                 :key="child.id"
-                :to="'/' + child.link"
+                :to="localePath('/' + child.link)"
                 >{{ child.label }}</b-dropdown-item
               >
             </b-dropdown>
@@ -359,6 +359,9 @@ header {
   justify-content: center;
   transition: all calc(300 * 1ms) cubic-bezier(0.42, 0.01, 0.58, 1);
   font-size: 16px;
+  & > .dropdown {
+    display: none;
+  }
 }
 .navbar-nav .nav-link.active {
   color: rgb(255, 167, 55);
@@ -488,9 +491,6 @@ nav .btn:hover {
 }
 .dropdownBtn {
   margin: 0 !important;
-  display: flex !important;
-  display: grid;
-  place-items: center;
   button {
     background: none !important;
     padding: 0 !important;
@@ -501,6 +501,8 @@ nav .btn:hover {
     box-shadow: none !important;
     border: none !important;
     min-width: 60px !important;
+    position: relative;
+    top: -3px;
   }
   .dropdown-menu {
     top: 40px !important;
