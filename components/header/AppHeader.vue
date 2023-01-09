@@ -49,34 +49,32 @@
         is-nav
       >
         <b-navbar-nav class="align-items-center">
-          <b-nav-item :to="localePath('/')" active-class="active" exact
-            >Who We Are</b-nav-item
-          >
-          <b-nav-item :to="localePath('/about')" active-class="active"
-            >What We Do</b-nav-item
-          >
-          <b-nav-item :to="localePath('/testimonials')" active-class="active"
-            >Where We Work</b-nav-item
-          >
-          <b-nav-item :to="localePath('/services')" active-class="active"
-            >Careers</b-nav-item
-          >
-          <b-nav-item :to="localePath('/blogs')" active-class="active"
-            >News</b-nav-item
-          >
-          <b-nav-item :to="localePath('/careers')" active-class="active"
-            >Career</b-nav-item
-          >
-          <b-nav-item :to="localePath('/events')" active-class="active"
-            >Events</b-nav-item
-          >
           <b-nav-item
-            :to="localePath('/logout')"
-            v-if="$store.state.user"
-            @click="logout"
-            class="outLarge"
-            >Logout</b-nav-item
+            active-class="active"
+            :to="localePath(`/${item.link}`)"
+            exact
+            v-for="item in $store.state.topMenu"
+            :key="item.id"
           >
+            <span v-if="!item.child.length">{{ item.label }}</span>
+
+            <b-dropdown
+              :text="item.label"
+              block
+              class="m-2 dropdownBtn"
+              v-if="item.child.length"
+            >
+              <b-dropdown-item
+                v-for="child in item.child"
+                :key="child.id"
+                :to="'/' + child.link"
+                >{{ child.label }}</b-dropdown-item
+              >
+            </b-dropdown>
+          </b-nav-item>
+          <b-nav-item v-if="$store.state.user" @click="logout" class="outLarge">
+            Logout
+          </b-nav-item>
         </b-navbar-nav>
         <div class="d-flex align-items-center">
           <a href="#" class="btn">Get in touch now</a>
@@ -485,7 +483,27 @@ nav .btn:hover {
     padding: 8px 20px !important;
     font-weight: 800;
     font-size: 15px;
-    text-align: right;
+    text-align: center;
+  }
+}
+.dropdownBtn {
+  margin: 0 !important;
+  display: flex !important;
+  display: grid;
+  place-items: center;
+  button {
+    background: none !important;
+    padding: 0 !important;
+    text-transform: none !important;
+    font-size: 1.1rem !important;
+    font-family: unset !important;
+    font-weight: 400 !important;
+    box-shadow: none !important;
+    border: none !important;
+    min-width: 60px !important;
+  }
+  .dropdown-menu {
+    top: 40px !important;
   }
 }
 </style>
