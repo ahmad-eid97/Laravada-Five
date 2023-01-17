@@ -41,10 +41,8 @@ export default {
   },
   async asyncData({ $axios, params }) {
     const blogDetails = await $axios.get(`/blogs/${params.id}`);
-    console.log(blogDetails);
-    console.log(params.id);
 
-    const latestBlogs = await $axios.get(`/blogs/?latest=1`);
+    const latestBlogs = await $axios.get(`/blogs?latest=1`);
 
     return {
       blogDetails: blogDetails.data.data,

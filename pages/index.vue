@@ -6,6 +6,8 @@
     <app-home-work :projects="projects"></app-home-work>
     <app-home-plans></app-home-plans>
     <app-home-news :blogs="blogs"></app-home-news>
+    <app-home-activities :activities="activities" />
+    <app-home-steps :steps="steps" />
     <app-home-testominials :testimonials="testimonials"></app-home-testominials>
     <app-home-partners :partners="partners"></app-home-partners>
     <app-home-bottom-banner
@@ -26,6 +28,8 @@ import AppHomeTestominials from "../components/home/AppHomeTestominials.vue";
 import AppHomeIntro from "../components/home/AppHomeIntro.vue";
 import AppHomeWork from "../components/home/AppHomeWork.vue";
 import AppHomePartners from "../components/home/AppHomePartners.vue";
+import AppHomeActivities from "../components/home/AppHomeActivities.vue";
+import AppHomeSteps from "../components/home/AppHomeSteps.vue";
 
 export default {
   name: "Home",
@@ -39,6 +43,8 @@ export default {
     AppHomeTestominials,
     AppHomePartners,
     AppHomeBottomBanner,
+    AppHomeActivities,
+    AppHomeSteps,
   },
   async asyncData({ $axios, app }) {
     const slides = await $axios.get("/sliders", {
@@ -69,6 +75,18 @@ export default {
       },
     });
 
+    const activities = await $axios.get("/sections/activities", {
+      headers: {
+        "Accept-Language": app.i18n.locale,
+      },
+    });
+
+    const steps = await $axios.get("/sections/steps", {
+      headers: {
+        "Accept-Language": app.i18n.locale,
+      },
+    });
+
     return {
       slides: slides.data.data.sliders,
       features: features.data.data,
@@ -78,6 +96,8 @@ export default {
       testimonials: testimonials.data.data.testimonials,
       partners: partners.data.data.partners,
       bottomBanner: bottomBanner.data.data,
+      activities: activities.data.data,
+      steps: steps.data.data,
     };
   },
 };

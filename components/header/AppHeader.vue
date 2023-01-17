@@ -77,7 +77,7 @@
           </b-nav-item>
         </b-navbar-nav>
         <div class="d-flex align-items-center">
-          <a href="#" class="btn">Get in touch now</a>
+          <a href="#" class="btn startBtn">Get in touch now</a>
 
           <div class="d-flex align-items-center largeScr">
             <langSwitch></langSwitch>
@@ -181,10 +181,6 @@ header {
   width: 100%;
   z-index: 999;
   max-height: 80px;
-  /* background: transparent !important; */
-  /* position: absolute;
-        left: 0;
-        right: 0; */
   background: var(--main-background);
   @include sm {
     padding-right: 10px;
@@ -353,6 +349,7 @@ header {
   max-width: 162px;
   height: auto;
 }
+
 .nav-item {
   position: relative;
   margin-right: 16px;
@@ -361,6 +358,9 @@ header {
   font-size: 16px;
   & > .dropdown {
     display: none;
+    /* @include md {
+      display: block;
+    } */
   }
 }
 .navbar-nav .nav-link.active {
@@ -376,7 +376,7 @@ header {
 .nav-link:hover {
   color: rgb(255, 167, 55);
 }
-
+/* ERROR FROM HERE ON */
 .navbar-toggler,
 .navbar-toggler:focus {
   border: none;
@@ -451,7 +451,7 @@ nav .btn:hover {
 }
 
 @include md {
-  nav .btn {
+  nav .startBtn {
     display: none;
   }
 }
@@ -490,7 +490,9 @@ nav .btn:hover {
   }
 }
 .dropdownBtn {
-  margin: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  margin: 0 auto !important;
   button {
     background: none !important;
     padding: 0 !important;
@@ -500,9 +502,16 @@ nav .btn:hover {
     font-weight: 400 !important;
     box-shadow: none !important;
     border: none !important;
-    min-width: 60px !important;
     position: relative;
     top: -3px;
+    min-width: unset !important;
+    @include md {
+      color: #000;
+      font-weight: bold !important;
+      width: 100% !important;
+      height: 100% !important;
+      min-height: 30px !important;
+    }
   }
   .dropdown-menu {
     top: 40px !important;
