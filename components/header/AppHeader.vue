@@ -77,7 +77,12 @@
           </b-nav-item>
         </b-navbar-nav>
         <div class="d-flex align-items-center">
-          <a href="#" class="btn startBtn">Get in touch now</a>
+          <a
+            href="/qoutation"
+            class="btn startBtn"
+            @click="$router.push('/qoutation')"
+            >Get Qoutation</a
+          >
 
           <div class="d-flex align-items-center largeScr">
             <langSwitch></langSwitch>
