@@ -1,5 +1,6 @@
 <template>
   <footer>
+    <subscribe />
     <div class="row justify-content-center">
       <div class="col-auto">
         <img src="/assets/images/logo2.png" alt="logoImage" />
@@ -57,9 +58,10 @@
 </template>
 
 <script>
+import Subscribe from "../subscribe/subscribe.vue";
 export default {
   name: "AppFooter",
-  components: {},
+  components: { Subscribe },
   data() {
     return {};
   },
@@ -73,10 +75,10 @@ export default {
 footer {
   padding-top: 48px;
   margin-top: 0px;
-  padding-right: 30px;
+  /* padding-right: 30px; */
   padding-bottom: 48px;
   margin-bottom: 0px;
-  padding-left: 30px;
+  /* padding-left: 30px; */
 }
 
 footer img {
