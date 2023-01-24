@@ -143,7 +143,7 @@ export default {
       ) &&
       this.bottomBanner.find(
         (one) => one.key === "banner-bottom_border_position_section"
-      ).value === "top"
+      ).value === "bottom"
     ) {
       document
         .querySelector(".banner-bottom")
