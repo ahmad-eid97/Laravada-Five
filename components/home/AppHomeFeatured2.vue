@@ -160,8 +160,8 @@ button.services {
 }
 
 button:hover {
-  background: transparent;
-  border-color: #fff;
+  /* background: transparent; */
+  /* border-color: #fff; */
 }
 
 @-webkit-keyframes fadeInLeft {

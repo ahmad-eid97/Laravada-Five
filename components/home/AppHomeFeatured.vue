@@ -54,16 +54,156 @@ export default {
   data() {
     return {};
   },
+  mounted() {
+    document
+      .querySelector(".featured")
+      .style.setProperty(
+        "--features-bg",
+        this.features.find(
+          (one) => one.key === "features_background_active_section"
+        ).value === "color"
+          ? this.features.find(
+              (one) => one.key === "features_background_color_section"
+            ).value
+          : `url(${
+              this.features.find(
+                (one) => one.key === "features_background_image_section"
+              ).value
+            })`
+      );
+
+    document
+      .querySelector(".featured")
+      .style.setProperty(
+        "--features-fontSize",
+        `${
+          this.features.find((one) => one.key === "features_font_size_section")
+            .value
+        }px`
+      );
+
+    if (
+      this.features.find(
+        (one) => one.key === "features_border_position_section"
+      ) &&
+      this.features.find(
+        (one) => one.key === "features_border_position_section"
+      ).value === "both"
+    ) {
+      document
+        .querySelector(".featured")
+        .style.setProperty(
+          "--features-border-top",
+          `${
+            this.features.find(
+              (one) => one.key === "features_border_size_section"
+            ).value
+          }px ${
+            this.features.find(
+              (one) => one.key === "features_border_type_section"
+            ).value
+          } ${
+            this.features.find(
+              (one) => one.key === "features_border_color_section"
+            ).value
+          }`
+        );
+
+      document
+        .querySelector(".featured")
+        .style.setProperty(
+          "--features-border-bottom",
+          `${
+            this.features.find(
+              (one) => one.key === "features_border_size_section"
+            ).value
+          }px ${
+            this.features.find(
+              (one) => one.key === "features_border_type_section"
+            ).value
+          } ${
+            this.features.find(
+              (one) => one.key === "features_border_color_section"
+            ).value
+          }`
+        );
+    } else if (
+      this.features.find(
+        (one) => one.key === "features_border_position_section"
+      ) &&
+      this.features.find(
+        (one) => one.key === "features_border_position_section"
+      ).value === "top"
+    ) {
+      document
+        .querySelector(".featured")
+        .style.setProperty(
+          "--features-border-top",
+          `${
+            this.features.find(
+              (one) => one.key === "features_border_size_section"
+            ).value
+          }px ${
+            this.features.find(
+              (one) => one.key === "features_border_type_section"
+            ).value
+          } ${
+            this.features.find(
+              (one) => one.key === "features_border_color_section"
+            ).value
+          }`
+        );
+    } else if (
+      this.features.find(
+        (one) => one.key === "features_border_position_section"
+      ) &&
+      this.features.find(
+        (one) => one.key === "features_border_position_section"
+      ).value === "top"
+    ) {
+      document
+        .querySelector(".featured")
+        .style.setProperty(
+          "--features-border-bottom",
+          `${
+            this.features.find(
+              (one) => one.key === "features_border_size_section"
+            ).value
+          }px ${
+            this.features.find(
+              (one) => one.key === "features_border_type_section"
+            ).value
+          } ${
+            this.features.find(
+              (one) => one.key === "features_border_color_section"
+            ).value
+          }`
+        );
+    }
+  },
 };
 </script>
-<style>
+<style lang="scss">
 .featured {
   background-color: rgb(247, 248, 249);
   margin-top: 0px;
-  padding-bottom: 0px;
   padding-left: 30px;
   padding-right: 30px;
   padding-top: 100px;
+
+  --features-bg: #fff;
+  --features-fontSize: 20px;
+  --features-border-top: 0px solid #fff;
+  --features-border-bottom: 0px solid #fff;
+
+  background: var(--features-bg);
+  border-top: var(--features-border-top);
+  border-bottom: var(--features-border-bottom);
+  background-repeat: no-repeat;
+  background-size: cover;
+  h2 {
+    font-size: var(--features-fontSize);
+  }
 }
 .featured h2 {
   margin-top: 10px;
@@ -85,16 +225,18 @@ export default {
   text-align: center;
 }
 .featured .items {
-  margin-top: 60px;
+  margin-top: 0px;
+  margin-bottom: 40px;
 }
 .featured .items .item {
   background-color: rgb(255, 255, 255);
-  padding-bottom: 35px;
+  /* padding-bottom: 35px; */
   padding-left: 35px;
   padding-right: 35px;
   padding-top: 35px;
   margin-top: 15px;
   margin-bottom: 15px;
+  height: 100%;
 }
 .featured .items .item .heading {
   margin-bottom: 15px;
