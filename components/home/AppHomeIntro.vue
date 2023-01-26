@@ -39,6 +39,9 @@ export default {
 };
 </script>
 <style lang="scss">
+.intro {
+  padding-bottom: 0;
+}
 .intro .item-1 {
   background: rgb(10, 14, 124);
   background: linear-gradient(

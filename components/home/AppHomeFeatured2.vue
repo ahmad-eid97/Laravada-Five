@@ -13,7 +13,7 @@
       <div
         v-for="service in services.slice(0, 4)"
         :key="service"
-        class="col-md-6 col-lg-6 col-xl-3 service"
+        class="col-sm-12 col-md-6 col-lg-6 col-xl-3 service"
       >
         <div class="item">
           <div class="heading">
@@ -47,7 +47,7 @@ export default {
   },
 };
 </script>
-<style>
+<style lang="scss">
 .featured2 {
   background-color: rgb(0, 12, 71);
   background-position: center center;
@@ -96,6 +96,9 @@ export default {
   margin-top: 15px;
   margin-bottom: 20px;
   height: 100%;
+  @include xl {
+    padding: 0;
+  }
 }
 .featured2 .items .item .heading {
   margin-bottom: 15px;

@@ -73,7 +73,7 @@ export default {
 </script>
 <style lang="scss">
 footer {
-  padding-top: 48px;
+  /* padding-top: 48px; */
   margin-top: 0px;
   /* padding-right: 30px; */
   padding-bottom: 48px;
