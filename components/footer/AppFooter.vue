@@ -3,16 +3,29 @@
     <subscribe />
     <div class="row justify-content-center">
       <div class="col-auto">
-        <img src="/assets/images/logo2.png" alt="logoImage" />
+        <img
+          :src="
+            $store.state.websiteSettings.find((one) => one.key === 'logo')
+              .plain_value
+          "
+          alt="logoImage"
+        />
       </div>
     </div>
     <b-navbar-nav
       class="align-items-center justify-content-center line footerLinks"
     >
-      <nuxt-link :to="localePath('/contact')">Contact</nuxt-link>
+      <nuxt-link
+        v-for="page in $store.state.footerPages"
+        :key="page.id"
+        :to="localePath(generatePagePath(page.id))"
+      >
+        {{ page.name }}
+      </nuxt-link>
+      <!-- <nuxt-link :to="localePath('/contact')">Contact</nuxt-link>
       <nuxt-link :to="localePath('/faq')">FAQs</nuxt-link>
       <nuxt-link :to="localePath('/policy')">Privacy Policy</nuxt-link>
-      <nuxt-link :to="localePath('/terms')">Terms & Conditions</nuxt-link>
+      <nuxt-link :to="localePath('/terms')">Terms & Conditions</nuxt-link> -->
     </b-navbar-nav>
     <div class="row mx-0 justify-content-center">
       <div class="col-auto copyright">
@@ -65,7 +78,20 @@ export default {
   data() {
     return {};
   },
-  methods: {},
+  methods: {
+    generatePagePath(id) {
+      switch (id) {
+        case 1:
+          return "/about";
+        case 2:
+          return "/contact";
+        case 3:
+          return "/terms";
+        case 4:
+          return "/policy";
+      }
+    },
+  },
   mounted() {
     console.log(this.$store.state.footerData);
   },
