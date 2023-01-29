@@ -15,13 +15,13 @@
     <b-navbar-nav
       class="align-items-center justify-content-center line footerLinks"
     >
-      <nuxt-link
-        v-for="page in $store.state.footerPages"
-        :key="page.id"
-        :to="localePath(generatePagePath(page.id))"
-      >
-        {{ page.name }}
-      </nuxt-link>
+      <li v-for="page in $store.state.footerPages" :key="page.id">
+        <nuxt-link
+          :to="localePath(generatePagePath(page.id))"
+          v-if="page.status"
+          >{{ page.name }}</nuxt-link
+        >
+      </li>
       <!-- <nuxt-link :to="localePath('/contact')">Contact</nuxt-link>
       <nuxt-link :to="localePath('/faq')">FAQs</nuxt-link>
       <nuxt-link :to="localePath('/policy')">Privacy Policy</nuxt-link>
@@ -42,28 +42,12 @@
     <div class="row mx-0 align-items-center justify-content-center">
       <div class="col-auto social">
         <a
-          :href="`https://${$store.state.footerData.facebook}`"
+          v-for="link in $store.state.socialLinks"
+          :key="link.key"
+          :href="link.url"
           target="_blank"
         >
-          <i class="fa-brands fa-facebook-f"></i>
-        </a>
-        <!-- <a :href="$store.state.footerData.twitter" >
-                    <i icon="fa-brands fa-twitter" />
-                </a> -->
-        <a :href="`https://${$store.state.footerData.youtube}`" target="_blank">
-          <i class="fa-brands fa-youtube"></i>
-        </a>
-        <a
-          :href="`https://${$store.state.footerData.instagram}`"
-          target="_blank"
-        >
-          <i class="fa-brands fa-instagram"></i>
-        </a>
-        <a
-          :href="`https://${$store.state.footerData.linkedin}`"
-          target="_blank"
-        >
-          <i class="fa-brands fa-linkedin-in"></i>
+          <i :class="link.icon"></i>
         </a>
       </div>
     </div>
