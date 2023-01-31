@@ -9,7 +9,7 @@
             The page you are looking for might have been removed had its name
             changed or is temporarily unavailable.
           </p>
-          <nuxt-link to="/" class="btn btn-primary">
+          <nuxt-link :to="localePath('/ class="btn btn-primary">
             Return To Home Page
           </nuxt-link>
         </div>
