@@ -1,18 +1,26 @@
 <template>
   <div class="home">
     <app-home-intro :slides="slides"></app-home-intro>
-    <app-home-featured :features="features"></app-home-featured>
+    <div v-if="features.status">
+      <app-home-featured :features="features.data"></app-home-featured>
+    </div>
     <app-home-featured-2 :services="services"></app-home-featured-2>
     <app-home-work :projects="projects"></app-home-work>
     <!-- <app-home-plans></app-home-plans> -->
     <app-home-news :blogs="blogs"></app-home-news>
-    <app-home-activities :activities="activities" />
-    <app-home-steps :steps="steps" />
+    <div v-if="activities.status">
+      <app-home-activities :activities="activities.data" />
+    </div>
+    <div v-if="steps.status">
+      <app-home-steps :steps="steps.data" />
+    </div>
     <app-home-testominials :testimonials="testimonials"></app-home-testominials>
     <app-home-partners :partners="partners"></app-home-partners>
-    <app-home-bottom-banner
-      :bottomBanner="bottomBanner"
-    ></app-home-bottom-banner>
+    <div v-if="bottomBanner.status">
+      <app-home-bottom-banner
+        :bottomBanner="bottomBanner.data"
+      ></app-home-bottom-banner>
+    </div>
     <!-- <app-home-features></app-home-features>
     <app-home-work></app-home-work> -->
     <SocialChat :attendants="attendants">
@@ -153,15 +161,15 @@ export default {
 
     return {
       slides: slides.data.data.sliders,
-      features: features.data.data,
+      features: features.data,
       projects: projects.data.data.portfolios,
       services: services.data.data.services,
       blogs: blogs.data.data.blogs.slice(0, 3),
       testimonials: testimonials.data.data.testimonials,
       partners: partners.data.data.partners,
-      bottomBanner: bottomBanner.data.data,
-      activities: activities.data.data,
-      steps: steps.data.data,
+      bottomBanner: bottomBanner.data,
+      activities: activities.data,
+      steps: steps.data,
     };
   },
 };
