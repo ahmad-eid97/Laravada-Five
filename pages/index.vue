@@ -1,22 +1,22 @@
 <template>
   <div class="home">
     <app-home-intro :slides="slides"></app-home-intro>
-    <div v-if="features.status">
+    <div v-if="$store.state.sectionsStatus.features">
       <app-home-featured :features="features.data"></app-home-featured>
     </div>
     <app-home-featured-2 :services="services"></app-home-featured-2>
     <app-home-work :projects="projects"></app-home-work>
     <!-- <app-home-plans></app-home-plans> -->
     <app-home-news :blogs="blogs"></app-home-news>
-    <div v-if="activities.status">
+    <div v-if="$store.state.sectionsStatus.activities">
       <app-home-activities :activities="activities.data" />
     </div>
-    <div v-if="steps.status">
+    <div v-if="$store.state.sectionsStatus.steps">
       <app-home-steps :steps="steps.data" />
     </div>
     <app-home-testominials :testimonials="testimonials"></app-home-testominials>
     <app-home-partners :partners="partners"></app-home-partners>
-    <div v-if="bottomBanner.status">
+    <div v-if="$store.state.sectionsStatus['banner-bottom']">
       <app-home-bottom-banner
         :bottomBanner="bottomBanner.data"
       ></app-home-bottom-banner>
